@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # 新規登録処理
+  # 新規の登録処理
   def create
     @post = Post.new(post_params)
 
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  # 編集登録処理
+  # 編集の登録処理
   def update
     @post = Post.find(params[:id])
 
@@ -34,6 +34,13 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  # 削除
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path
   end
 
 
