@@ -2,8 +2,10 @@
 
 <% if @posts.any? %>
     <% @posts.each do |post| %>
-        <%= post.content %>
+        <%= post.content %><br>
     <% end %>
 <% else %>
-    <p>投稿はまだありません</p>
+    <p>投稿はまだありません</p><br>
 <% end %>
+
+<%= link_to "新規投稿", new_post_path %>
