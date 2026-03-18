@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  # ログインユーザーのみ実行できるようにする設定
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   # 一覧
   def index
     @posts = Post.all
@@ -11,7 +14,8 @@ class PostsController < ApplicationController
 
   # 新規の登録処理
   def create
-    @post = Post.new(post_params)
+    # current_userをつけると今操作しているuser_idが自動で入るようになる
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to posts_path 
