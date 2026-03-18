@@ -2,7 +2,7 @@
 
 <% if @posts.any? %>
     <% @posts.each do |post| %>
-        <%= post.content %><br>
+        <%= link_to post.content, edit_post_path(post) %><br>
     <% end %>
 <% else %>
     <p>投稿はまだありません</p><br>
