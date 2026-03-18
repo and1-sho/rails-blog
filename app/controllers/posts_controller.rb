@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  # 投稿処理
+  # 新規登録処理
   def create
     @post = Post.new(post_params)
 
@@ -17,6 +17,22 @@ class PostsController < ApplicationController
       redirect_to posts_path 
     else
       render :new
+    end
+  end
+
+  # 編集
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  # 編集登録処理
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to posts_path 
+    else
+      render :edit
     end
   end
 
