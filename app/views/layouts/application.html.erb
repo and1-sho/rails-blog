@@ -13,7 +13,8 @@
   <body>
     <% if user_signed_in? %>
       <p>
-        ログイン中: <%= current_user.email %>
+        ログイン中: <%= current_user.name.presence || current_user.email %>さん
+        <%= link_to "アカウント編集", edit_user_registration_path %> |
         <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
       </p>
     <% else %>
