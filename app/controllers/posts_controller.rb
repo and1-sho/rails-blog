@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   # ログインユーザーのみ実行できるようにする設定
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_own_post, only: [:edit, :update, :destroy]
 
   # 一覧
   def index
@@ -26,12 +27,12 @@ class PostsController < ApplicationController
 
   # 編集
   def edit
-    @post = Post.find(params[:id])
+    
   end
 
   # 編集の登録処理
   def update
-    @post = Post.find(params[:id])
+    
 
     if @post.update(post_params)
       redirect_to posts_path 
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
 
   # 削除
   def destroy
-    @post = Post.find(params[:id])
+    
     @post.destroy
     redirect_to posts_path
   end
@@ -50,7 +51,13 @@ class PostsController < ApplicationController
 
   private
 
+  # セキュリティ（フィルター）
   def post_params
     params.require(:post).permit(:content)
+  end
+
+  # ユーザーの
+  def set_own_post
+    @post = current_user.posts.find(params[:id])
   end
 end
