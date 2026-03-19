@@ -3,8 +3,13 @@
 <% if @posts.any? %>
     <% @posts.each do |post| %>
         投稿者：<%= post.user&.name.presence || post.user&.email || "（不明）" %><br>
-        <%= link_to post.content, edit_post_path(post) %><br>
-        <%= link_to "削除", post_path(post), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %><br><br>
+        <%= post.content %><br>
+
+        <% if post.user == current_user %>
+            <%= link_to "編集", edit_post_path(post) %>
+            <%= link_to "削除", post_path(post), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %><br><br>
+        <% end %>
+        <br>
     <% end %>
 <% else %>
     <p>投稿はまだありません</p><br>
