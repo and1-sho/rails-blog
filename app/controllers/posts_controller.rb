@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # 一覧
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user).all
   end
 
   #　新規投稿 
