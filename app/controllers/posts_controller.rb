@@ -8,6 +8,11 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user).all
   end
 
+  # 詳細
+  def show
+    @post = Post.find(params[:id])
+  end
+
   #　新規投稿 
   def new
     @post = Post.new
@@ -56,7 +61,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content)
   end
 
-  # ユーザーの
+  # ログインしているユーザーの投稿の中から、URLパラメータのidの投稿を取得する
   def set_own_post
     @post = current_user.posts.find(params[:id])
   end
