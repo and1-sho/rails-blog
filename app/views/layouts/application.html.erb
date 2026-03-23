@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <% # フラッシュメッセージ %>
+    <% if notice.present? %>
+        <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if alert.present? %>
+        <p class="alert"><%= alert %></p>
+    <% end %>
+
     <% if user_signed_in? %>
       <p>
         ログイン中: <%= current_user.name.presence || current_user.email %>さん
