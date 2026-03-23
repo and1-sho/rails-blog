@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path 
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -38,11 +38,10 @@ class PostsController < ApplicationController
   # 編集の登録処理
   def update
     
-
     if @post.update(post_params)
       redirect_to posts_path 
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
