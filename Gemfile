@@ -26,6 +26,9 @@ gem "devise"
 # devise-i18n
 gem "devise-i18n"
 
+# rails-i18n
+gem "rails-i18n", "~> 7.0.10"
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
