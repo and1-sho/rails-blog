@@ -23,6 +23,9 @@ gem "turbo-rails"
 #　devise
 gem "devise"
 
+# devise-i18n
+gem "devise-i18n"
+
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
